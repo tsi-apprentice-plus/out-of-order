@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import getProduct from './getProductsApi';
-import Image from 'C:/React/out-of-order/public/JM.PNG';
-import styled
+import { Style } from 'util';
+import Link from 'next/link';
+import styles from './page.module.css';
+// import Image from '@public/JM.PNG';
+
 
 interface ProductPageProps{
 
@@ -30,6 +33,7 @@ async function App({ params }: ProductPageProps) {
                 <span>{product.productName}</span>
                 <br />
                 <span>Price: £{product.price}</span>
+                <br />
                 <hr />
 
             
@@ -51,6 +55,14 @@ async function App({ params }: ProductPageProps) {
                         <tr>
                             <td>Availability:</td>
                             <td>{product.Available}</td>
+                        </tr>
+                        <tr>
+                            <Link href={`/Reviews/${product.productId}`}>
+                            <h3 className='review-link'style={{ textDecoration: "none!important" }}></h3>
+                            <button className={styles.button56} role="button">
+                                View the reviews for this product 
+                            </button>
+                            </Link>
                         </tr>
                     </tbody>
                 </table>

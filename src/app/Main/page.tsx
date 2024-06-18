@@ -1,6 +1,6 @@
 "use client"
 import React, { useState, useEffect } from 'react';
-import Image from "@/public/JM.PNG";
+import Image from "next/image";
 import getProduct from '../Products/[id]/getProductsApi';
 import { ProductData } from '../Products/[id]/getProductsApi';
 import getAllProducts from './getAllProductsApi';
@@ -40,7 +40,8 @@ function App(): JSX.Element {
           <h2 className="SectionTitle" style={{ color: "white" }}>Search for your desired item</h2>
 
           <p className="SectionDescription" style={{ color: "white" }}>
-            OutOfOrder...
+            OutOfOrder
+            {/* <Image src="/JM.PNG" alt="OutOfOrder logo" width={200} height={150} /> */}
           </p>
         </div>
       </center>
@@ -55,15 +56,15 @@ function App(): JSX.Element {
         />
       </div>
 
-      {/* Player card */}
+      {/* Product card */}
 
       <div className="product-card-container">
         {filteredProducts.map((product, index) => (
-          <Link href={`/Players/${product.productId}`}>
+          <Link href={`/Products/${product.productId}`}>
             <div key={index} className="card">
               <span style={{ textDecoration: "none!important" }}>{product.productName}</span>
               <br />
-              <span>{product.price}</span>
+              <span>£{product.price}</span>
               <br />
 
             </div>
