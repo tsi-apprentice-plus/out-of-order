@@ -15,7 +15,7 @@ pipeline {
         }
         stage('Install playwright') {
             steps {
-                sh 'npx playwright install'
+                sh 'sudo npx playwright install-deps && npx playwright install'
             }
         }
         stage('Test') {
