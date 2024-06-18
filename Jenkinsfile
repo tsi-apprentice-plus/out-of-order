@@ -13,6 +13,11 @@ pipeline {
                 sh 'npm install'
             }
         }
+        stage('Install playwright') {
+            steps {
+                sh 'npx playwright install'
+            }
+        }
         stage('Test') {
             steps {
                 sh 'npx playwright test'
