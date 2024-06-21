@@ -1,0 +1,23 @@
+name: Linting test
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+jobs:
+  test:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: lts/*
+
+    # Install dependencies
+    - name: Install dependencies for lint
+      run: npm ci
+          
+    # Run Lint
+    - name: Lint
+      run: npm run lint
