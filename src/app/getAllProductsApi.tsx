@@ -1,4 +1,4 @@
-import { ProductData } from "../Products/[id]/getProductsApi";
+import { ProductData } from "./Products/[id]/getProductsApi";
 
 type Products = ProductData[]
     
