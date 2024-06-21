@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 test.describe('App component', () => {
   test.beforeEach(async ({ page }) => {
     // Navigate to the page where the component is rendered
-    await page.goto('http://localhost:3000/Main'); 
+    await page.goto('http://localhost:3000'); 
   });
 
   test('display search bar and all products', async ({ page }) => {

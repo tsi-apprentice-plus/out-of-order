@@ -3,7 +3,10 @@ import getProduct from './getProductsApi';
 import { Style } from 'util';
 import Link from 'next/link';
 import styles from './page.module.css';
-// import Image from '@public/JM.PNG';
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+import "dayjs/locale/en";
+
 
 
 interface ProductPageProps{
@@ -21,7 +24,11 @@ async function App({ params }: ProductPageProps) {
     const product = await getProduct(params.id)
     console.log(product)
 
-
+    dayjs.extend(relativeTime);
+    dayjs.locale("en");
+            <span>
+              {dayjs(releaseDate.timestamp).fromNow()}
+            </span>
     {/* Product card */ }
 
 
@@ -30,7 +37,8 @@ async function App({ params }: ProductPageProps) {
         <div className="product-card-container">
 
             <div className="card">
-                <span>{product.image}</span>
+                <img src={product.image} /> 
+                <br />
                 <span>{product.productName}</span>
                 <br />
                 <span>Price: £{product.price}</span>

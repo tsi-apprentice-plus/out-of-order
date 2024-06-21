@@ -6,7 +6,6 @@ import { ProductData } from './Products/[id]/getProductsApi';
 import getAllProducts from './getAllProductsApi';
 import Link from 'next/link';
 
-
 function App(): JSX.Element {
   const [products, setProducts] = useState<ProductData[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>('');
@@ -63,7 +62,7 @@ function App(): JSX.Element {
 
           <Link key={index} href={`/Products/${product.productId}`}>
             <div className="card">
-              <span>{product.image}</span>
+              <img src={product.image}/>
               <br/>
               <span style={{ textDecoration: "none!important" }}>{product.productName}</span>
               <br />
