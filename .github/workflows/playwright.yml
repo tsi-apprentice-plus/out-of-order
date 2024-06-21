@@ -16,14 +16,14 @@ jobs:
 
     #Install MongoDB tools
     - name: Install mongosh
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y wget gnupg
-          wget -qO - https://www.mongodb.org/static/pgp/server-6.0.asc | sudo apt-key add -
-          echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list
-          sudo apt-get update
-          sudo apt-get install -y mongodb-mongosh mongodb-org-tools
+        run: sudo apt-get update
+            sudo apt-get install -y wget gnupg
+            wget -qO - https://www.mongodb.org/static/pgp/server-6.0.asc | sudo apt-key add -
+            echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list
+            sudo apt-get update
+            sudo apt-get install -y mongodb-mongosh mongodb-org-tools
     
+          
     #Load MongoDB collections 
      - name: Load products into MongoDB
         run: mongoimport --uri mongodb://localhost:27017/OutOfOrder --collection products --file ./mongo/OutOfOrder.products.json --jsonArray
