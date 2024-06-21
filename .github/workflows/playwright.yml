@@ -14,6 +14,13 @@ jobs:
       with:
         node-version: lts/*
 
+    # Clone the backend repository
+    - name: Checkout Backend Repository
+      uses: actions/checkout@v4
+      with:
+        repository: incogzino/store-api
+        path: backend   
+
     #Install MongoDB tools
     - name: Install mongosh
       run: |
@@ -32,20 +39,13 @@ jobs:
 
     #Load MongoDB collections 
     - name: Load products into MongoDB
-      run: mongoimport --uri mongodb://localhost:27017/OutOfOrder --collection products --file ./mongo/OutOfOrder.products.json --jsonArray
+      run: mongoimport --uri mongodb://localhost:27017/OutOfOrder --collection products --file ./backend/products.json --jsonArray
     - name: Load reviews into MongoDB
-      run: mongoimport --uri mongodb://localhost:27017/OutOfOrder --collection reviews --file ./mongo/OutOfOrder.reviews.json --jsonArray
+      run: mongoimport --uri mongodb://localhost:27017/OutOfOrder --collection reviews --file ./backend/reviews.json --jsonArray
 
     #Frontend dependencies installed    
     - name: Install dependencies
       run: npm ci
-
-    # Clone the backend repository
-    - name: Checkout Backend Repository
-      uses: actions/checkout@v4
-      with:
-        repository: incogzino/store-api
-        path: backend
  
     # Install backend dependencies
     - name: Install Backend Dependencies
