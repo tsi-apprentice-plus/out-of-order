@@ -24,6 +24,12 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y mongodb-mongosh mongodb-org-tools
     
+    # MongoDB setup
+    - name: MongoDB Setup
+      uses: supercharge/mongodb-github-action@v1
+      with:
+        mongodb-version: latest
+
     #Load MongoDB collections 
     - name: Load products into MongoDB
       run: mongoimport --uri mongodb://localhost:27017/OutOfOrder --collection products --file ./mongo/OutOfOrder.products.json --jsonArray
