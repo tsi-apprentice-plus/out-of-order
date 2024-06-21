@@ -13,10 +13,44 @@ jobs:
     - uses: actions/setup-node@v4
       with:
         node-version: lts/*
+
+    #Install MongoDB tools
+    - name: Install mongosh
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y wget gnupg
+          wget -qO - https://www.mongodb.org/static/pgp/server-6.0.asc | sudo apt-key add -
+          echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list
+          sudo apt-get update
+          sudo apt-get install -y mongodb-mongosh mongodb-org-tools
+    
+    #Load MongoDB collections 
+     - name: Load products into MongoDB
+        run: mongoimport --uri mongodb://localhost:27017/OutOfOrder --collection products --file ./mongo/OutOfOrder.products.json --jsonArray
+      - name: Load reviews into MongoDB
+        run: mongoimport --uri mongodb://localhost:27017/OutOfOrder --collection reviews --file ./mongo/OutOfOrder.reviews.json --jsonArray
+
+    #Frontend dependencies installed    
     - name: Install dependencies
       run: npm ci
+
+    # Clone the backend repository
+    - name: Checkout Backend Repository
+      uses: actions/checkout@v4
+      with:
+        repository: incogzino/store-api
+        path: backend
+ 
+    # Install backend dependencies
+    - name: Install Backend Dependencies
+      run: npm ci
+      working-directory: ./backend  
+
+    #Playwright dependencies installed 
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
+      
+    #Playwright tests
     - name: Run Playwright tests
       run: npx playwright test
     - uses: actions/upload-artifact@v4

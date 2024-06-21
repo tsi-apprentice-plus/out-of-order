@@ -30,6 +30,7 @@ async function App({ params }: ProductPageProps) {
         <div className="product-card-container">
 
             <div className="card">
+                <span>{product.image}</span>
                 <span>{product.productName}</span>
                 <br />
                 <span>Price: £{product.price}</span>

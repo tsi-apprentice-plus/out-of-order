@@ -1,5 +1,8 @@
+"use client"
 import React, { useState, useEffect } from 'react';
 import getReview from './getReviewsApi';
+import { createReview } from '@/app/NewReview/[id]/addReviewsApi';
+import Form from './form';
 // import Image from '@public/JM.PNG';
 
 
@@ -9,7 +12,9 @@ interface ReviewPageProps{
 } 
 
 async function App({ params }: ReviewPageProps) {
-
+    
+    const [customer, setCustomer] = useState<string>("");
+    const [comment, setComment] = useState<string>("");
     // API gets fetched 
 
     const id = params.id
@@ -19,8 +24,8 @@ async function App({ params }: ReviewPageProps) {
     console.log(review)
 
 
-    {/* Review card */ }
 
+    {/* Review card */ }
 
     return (
 
@@ -32,12 +37,12 @@ async function App({ params }: ReviewPageProps) {
                 <span>{review.productName}</span>
                 <br />
                 <span>{review.comment}</span>
-                
-
-    
             </div>
-        </div>
+            <Form productId={params.id} />
+     </div>
     )
+
+        
 }
 
 export default App;

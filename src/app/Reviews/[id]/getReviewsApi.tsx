@@ -1,5 +1,6 @@
 export interface ReviewData {
     productId: string;
+    image: string;
     reviewId: string;
     customer: string;
     productName: string;

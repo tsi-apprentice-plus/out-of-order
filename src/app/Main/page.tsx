@@ -62,6 +62,8 @@ function App(): JSX.Element {
         {filteredProducts.map((product, index) => (
           <Link href={`/Products/${product.productId}`}>
             <div key={index} className="card">
+              <span>{product.image}</span>
+              <br/>
               <span style={{ textDecoration: "none!important" }}>{product.productName}</span>
               <br />
               <span>£{product.price}</span>
