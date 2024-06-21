@@ -54,7 +54,8 @@ jobs:
 
     # Running API
     - name: Run API
-      run: npm start  
+      run: npm start 
+      working-directory: ./backend 
 
     #Playwright dependencies installed 
     - name: Install Playwright Browsers
