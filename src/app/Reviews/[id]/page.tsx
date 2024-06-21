@@ -1,4 +1,3 @@
-"use client"
 import React, { useState, useEffect } from 'react';
 import getReview from './getReviewsApi';
 import { createReview } from '@/app/NewReview/[id]/addReviewsApi';
@@ -13,8 +12,7 @@ interface ReviewPageProps{
 
 async function App({ params }: ReviewPageProps) {
     
-    const [customer, setCustomer] = useState<string>("");
-    const [comment, setComment] = useState<string>("");
+
     // API gets fetched 
 
     const id = params.id

@@ -1,3 +1,4 @@
+"use client"
 import { createReview } from "@/app/NewReview/[id]/addReviewsApi";
 import { useState } from "react";
 export default function Form({ productId }: { productId: string }) {
