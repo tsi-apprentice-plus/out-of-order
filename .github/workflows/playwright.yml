@@ -43,16 +43,16 @@ jobs:
     - name: Load reviews into MongoDB
       run: mongoimport --uri mongodb://localhost:27017/OutOfOrder --collection reviews --file ./backend/reviews.json --jsonArray
 
-    #Frontend dependencies installed    
-    - name: Install dependencies
-      run: npm ci
- 
     # Install backend dependencies
     - name: Install Backend Dependencies
       run: npm ci
       working-directory: ./backend  
-
-    # Running API
+    
+      #Frontend dependencies installed    
+    - name: Install dependencies
+      run: npm ci
+    
+      # Running API
     - name: Run API
       run: npm start 
       working-directory: ./backend 
