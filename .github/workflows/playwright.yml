@@ -58,7 +58,7 @@ jobs:
       working-directory: ./backend 
 
       # Run Frontend
-    - name: Run API
+    - name: Run frontend
       run: npm run dev &
     
       #Playwright dependencies installed 
