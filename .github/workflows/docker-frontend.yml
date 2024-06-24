@@ -1,4 +1,4 @@
-name: Docker API Test
+name: Docker Frontend Test
 on:
   push:
     branches: [ main, master ]
