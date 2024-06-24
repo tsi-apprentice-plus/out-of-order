@@ -26,9 +26,7 @@ jobs:
         - name: Build and push Docker image
           uses: docker/build-push-action@v5
           with:
-            context: ./out-of-order/.
-            platforms: linux/amd64,linux/arm64
-            file: out-of-order/Dockerfile
+            platforms: linux/amd64
             push: true
             tags: ghcr.io/incogzino/build-frontend:latest
             cache-from: type=gha
