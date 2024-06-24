@@ -124,7 +124,7 @@ a {
 }
 
 
-.player-card-container {
+.product-card-container {
 
   display: flex;
   flex-wrap: wrap;
@@ -133,7 +133,7 @@ a {
   margin: 0 -8px; 
 }
 
-.searchPlayers input {
+.searchProducts input {
 
   font-size: 30px;
   min-width: 200px;
@@ -142,7 +142,7 @@ a {
   color: orange;
 }
 
-.searchPlayers {
+.searchProducts {
   margin-top: 60px;
   margin-bottom: 20px;
   display: flex;
