@@ -15,7 +15,7 @@ jobs:
     - name: Check for updates from upstream
       id: check_updates
       run: |
-        git remote add upstream https://github.com/AamirahP/my-organiser.git
+        git remote add upstream https://github.com/incogzino/out-of-order
         git fetch upstream
         UPSTREAM_COMMIT=$(git rev-parse upstream/main)
         CURRENT_COMMIT=$(git rev-parse HEAD)
@@ -29,5 +29,5 @@ jobs:
       if: steps.check_updates.outputs.updates == 'true'
       run: |
         WEBHOOK_URL=${{ secrets.TEAMS_WEBHOOK_URL }}
-        MESSAGE="There are new updates available in the upstream testing repository. Please visit the repo @ https://github.com/tsi-apprentice-plus/Aamirah-my-organiser."
+        MESSAGE="There are new updates available in the upstream testing repository. Please visit the repo @ https://github.com/tsi-apprentice-plus/out-of-order."
         curl -H 'Content-Type: application/json' -d "{\"text\": \"${MESSAGE}\"}" $WEBHOOK_URL
