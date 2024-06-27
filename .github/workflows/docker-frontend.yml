@@ -27,14 +27,14 @@ jobs:
           uses: docker/login-action@v3
           with:
             registry: ghcr.io
-            username: incogzino
-            password: ${{ secrets.GHCR_PAT }}
+            username: asharubendy
+            password: ${{ secrets.GHCR }}
 
         - name: Build and push Docker image
           uses: docker/build-push-action@v5
           with:
             platforms: linux/amd64
             push: true
-            tags: ghcr.io/incogzino/build-frontend:latest
+            tags: ghcr.io/asharubendy/josh-frontend:prod
             cache-from: type=gha
             cache-to: type=gha
